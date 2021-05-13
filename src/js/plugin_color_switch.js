@@ -1,4 +1,5 @@
 import { colors } from "./colors_palette";
+import { refs } from "./refs";
 
 const DELAY = 1000;
 
@@ -29,11 +30,13 @@ export class ColorSwitch {
                 colorIndex
             );
             this.changeColor(colors[colorIndex]);
+            refs.startBtn.disabled = true;
         }, DELAY);
     }
 
     stop() {
         clearInterval(this.intervalId);
+        refs.startBtn.disabled = false;
         this.isActive = false;
     }
 
