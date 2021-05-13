@@ -1,7 +1,14 @@
 import "./styles.css";
-import { CountdownTimer } from "./js/plugin-timer";
+import { ColorSwitch } from "./js/plugin_color_switch";
+import { refs } from "./js/refs";
 
-new CountdownTimer({
-    selector: "#timer-1",
-    targetDate: new Date("Jun 29, 2021"),
+const colorSwitch = new ColorSwitch({
+    changeColor: updateClockface,
 });
+
+function updateClockface(color) {
+    refs.body.style.backgroundColor = color;
+}
+
+refs.startBtn.addEventListener("click", colorSwitch.start.bind(colorSwitch));
+refs.stopBtn.addEventListener("click", colorSwitch.stop.bind(colorSwitch));
